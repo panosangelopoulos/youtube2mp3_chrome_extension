@@ -9,39 +9,39 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
+  'use strict';
 
-    const video_id = window.location.href.split('=')[1] ;
-    const requestPage = function(url) {
-        return new Promise(function (resolve, reject) {
-            const xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (this.readyState == XMLHttpRequest.DONE) {
-                    resolve(this.responseXML);
-                }
-            };
-            xhr.open("GET", url, true);
-            xhr.responseType = 'document';
-            xhr.send();
-        });
+  const video_id = window.location.href.split('=')[1];
+  const requestPage = function(url) {
+    return new Promise(function(resolve, reject) {
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState == XMLHttpRequest.DONE) {
+          resolve(this.responseXML);
+        }
+      };
+      xhr.open('GET', url, true);
+      xhr.responseType = 'document';
+      xhr.send();
+    });
+  };
+
+  const renderDownloadButton = function(content) {
+    const innerContainer = document.getElementById('api-button-container-inner');
+    if (innerContainer) {
+      innerContainer.innerHTML = content;
+      return;
+    }
+
+    const video_appears = function(video_id) {
+      const video_id_appers = document.getElementById('video_id');
+      video_id_appers.innerText = video_id;
+      return video_id_appers;
     };
 
-    const renderDownloadButton = function(content) {
-        const innerContainer = document.getElementById('api-button-container-inner');
-        if (innerContainer) {
-            innerContainer.innerHTML = content;
-            return;
-        }
-
-        const video_appears = function (video_id){
-          const video_id_appers = document.getElementById('video_id');
-          video_id_appers.innerText = video_id;
-          return video_id_appers;
-        };
-
-        const container = document.createElement('div');
-        container.className = 'api-button-container';
-        container.innerHTML = `
+    const container = document.createElement('div');
+    container.className = 'api-button-container';
+    container.innerHTML = `
         <style>
         .api-button-container {
           position: fixed;
@@ -60,25 +60,24 @@
           <div id="name">${video_id}</div>
         </div>
         `;
-        const body = document.getElementsByTagName('body')[0];
-        body.appendChild(container);
-    };
+    const body = document.getElementsByTagName('body')[0];
+    body.appendChild(container);
+  };
 
+  async function main() {
+    renderDownloadButton();
+  }
 
-    async function main() {
-        renderDownloadButton();
-    };
+  async function timeoutvideo_id() {
+    const video_new = window.location.href.split('=')[1];
+    let video__new_id;
+    if (video__new_id != video_id) {
+      let video_id = video__new_id;
+    }
+  }
 
-    async function timeoutvideo_id() {
-          const video_new = window.location.href.split('=')[1]
-          let video__new_id ;
-          if (video__new_id != video_id) {
-              let video_id = video__new_id ;
-          }
-    };
-
-    main();
-    window.setInterval(function(){
-      timeoutvideo_id();
-    }, 1000);
+  main();
+  window.setInterval(function() {
+    timeoutvideo_id();
+  }, 1000);
 })();
