@@ -11,7 +11,7 @@
 (function() {
     'use strict';
 
-    const video_id = window.location.href.split('=')[1]
+    const video_id = window.location.href.split('=')[1] ;
     const requestPage = function(url) {
         return new Promise(function (resolve, reject) {
             const xhr = new XMLHttpRequest();
@@ -42,23 +42,24 @@
         const container = document.createElement('div');
         container.className = 'api-button-container';
         container.innerHTML = `
-<style>
-.api-button-container {
-position: fixed;
-top: 3em;
-width: 40%;
-left: 80%;
-padding: 1em;
-z-index: 9999999;
-font-size: 150%;
-}
-</style>
-<div id="api-button-container-inner">
-  <iframe width="250px" height="60px" scrolling="no" style="border:none;"
-    src="https://www.download-mp3-youtube.com/api/?api_key=MzU0NDc5MTU1&format=mp3&video_id=${video_id}">
-  </iframe>
-</div>
-`;
+        <style>
+        .api-button-container {
+          position: fixed;
+          top: 3em;
+          width: 40%;
+          left: 80%;
+          padding: 1em;
+          z-index: 9999999;
+          font-size: 150%;
+        }
+        </style>
+        <div id="api-button-container-inner">
+          <iframe width="250px" height="60px" scrolling="no" style="border:none;" id="${video_id}"
+            src="https://www.download-mp3-youtube.com/api/?api_key=MzU0NDc5MTU1&format=mp3&video_id=${video_id}">
+          </iframe>
+          <div id="name">${video_id}</div>
+        </div>
+        `;
         const body = document.getElementsByTagName('body')[0];
         body.appendChild(container);
     };
@@ -68,5 +69,16 @@ font-size: 150%;
         renderDownloadButton();
     };
 
+    async function timeoutvideo_id() {
+          const video_new = window.location.href.split('=')[1]
+          let video__new_id ;
+          if (video__new_id != video_id) {
+              let video_id = video__new_id ;
+          }
+    };
+
     main();
+    window.setInterval(function(){
+      timeoutvideo_id();
+    }, 1000);
 })();
