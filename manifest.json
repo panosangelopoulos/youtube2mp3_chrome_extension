@@ -1,0 +1,16 @@
+  {
+    "name": "Youtube2Mp3",
+    "version": "0.1",
+    "description": "Every time you want to download a youtube video to mp3 just click Download button!",
+    "background": {
+      "scripts": ["youtube2mp3.user.js"],
+      "persistent": false
+    },
+    "icons": {
+      "16": "images/arrow-download-icon16.png",
+      "32": "images/arrow-download-icon32.png",
+      "48": "images/arrow-download-icon48.png",
+      "128": "images/arrow-download-icon128.png"
+    },
+    "manifest_version": 2
+  }
